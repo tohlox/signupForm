@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import ParticipantList from './ParticipantList';
+import ParticipantList from '../views/Participant-list';
 
 
 class Styles extends Component {
@@ -7,12 +7,16 @@ class Styles extends Component {
 
   render() {
 
-    return(<div> <ParticipantList Styles={this.state.styles}/>
+    return(
 
-   <div className="Styles">
+    	
+    	<div className="Styles">
+    	<ParticipantList participantListStyles={this.state.participantListStyles}/>
+
+   
     
      </div>
-   </div>
+   
   
     );
   }

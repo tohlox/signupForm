@@ -17,7 +17,7 @@ class FakeParticipantList {
    
     };
   }
-getObjectAt(/*number*/ index) /*?object*/ {
+  getObjectAt(/*number*/ index) /*?object*/ {
     if (index < 0 || index > this.size){
       return undefined;
     }

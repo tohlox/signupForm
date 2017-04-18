@@ -64,23 +64,23 @@ class ParticipantList extends Component {
   };
   	 /* *Returning name,email,phone of participantList * */
     return(
-     
-  <div style={containerStyle} className="container">
-    
-    <ul style={ulStyle} className="list-inline">
-        
-      <li style={nameListStyle} className="list-inline-item">
-        <p style={listText}>{this.props.participant.name}</p>
-      </li>
-        <li style={emailListStyle} className="list-inline-item">
-          <p style={listText}> {this.props.participant.email}</p>
+       
+     <div style={containerStyle} className="container">
+      
+      <ul style={ulStyle} className="list-inline">
+          
+        <li style={nameListStyle} className="list-inline-item">
+          <p style={listText}>{this.props.participant.name}</p>
         </li>
-       <li style={phoneListStyle} className="list-inline-item">
-        <p style={listText}>{this.props.participant.phoneNumber}</p>
-       </li>
-    </ul>
- </div>
-    
+          <li style={emailListStyle} className="list-inline-item">
+            <p style={listText}> {this.props.participant.email}</p>
+          </li>
+         <li style={phoneListStyle} className="list-inline-item">
+          <p style={listText}>{this.props.participant.phoneNumber}</p>
+         </li>
+      </ul>
+    </div>
+      
     );
   }
 }
