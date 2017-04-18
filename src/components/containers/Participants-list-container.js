@@ -2,6 +2,9 @@ import React,{ Component } from 'react';
 import ParticipantList from '../views/Participant-list';
 
 class ParticipantsListContainer extends Component {
+  deleteParticipant(id){
+    this.props.onDelete(id);
+  }
 
   render() {
     let participants;
@@ -11,7 +14,7 @@ class ParticipantsListContainer extends Component {
   		console.log(participant);
   	
     return ( 
-  		<ParticipantList key={participant.id} participant={participant} />
+  		<ParticipantList onDelete={this.deleteParticipant.bind(this)} key={participant.id} participant={participant} />
   	);
   	});
 

@@ -35,7 +35,13 @@ class App extends Component {
    let participants = this.state.participantList;
    participants._cache.push(participant);
    this.setState({participantList:participants});
-   console.log(participant);
+  //console.log(participant);
+  }
+  handleDeleteParticipant(id){
+     let participants = this.state.participantList;
+     let index = participants._cache.findIndex(x => x.id === id);
+     participants._cache.splice(index,1);
+     this.setState({participantList:participants});
   }
 
   render() {
@@ -45,7 +51,7 @@ class App extends Component {
 
 
         {/*Pases radom participantList to ParticipantsListContainer*/}
-        <ParticipantsListContainer participantList={this.state.participantList._cache}/>
+        <ParticipantsListContainer participantList={this.state.participantList._cache} onDelete={this.handleDeleteParticipant.bind(this)}/>
 
       </div>
     );

@@ -3,6 +3,11 @@ import React,{ Component } from 'react';
 
 class ParticipantList extends Component {
 
+  deleteParticipant(id){
+    this.props.onDelete(id);
+    //console.log('test');
+
+  }
 
 
   render() {
@@ -70,13 +75,13 @@ class ParticipantList extends Component {
       <ul style={ulStyle} className="list-inline">
           
         <li style={nameListStyle} className="list-inline-item">
-          <p style={listText}>{this.props.participant.name}</p>
+          <p style={listText}>{this.props.participant.name} </p>
         </li>
           <li style={emailListStyle} className="list-inline-item">
             <p style={listText}> {this.props.participant.email}</p>
           </li>
          <li style={phoneListStyle} className="list-inline-item">
-          <p style={listText}>{this.props.participant.phoneNumber}</p>
+          <p style={listText}>{this.props.participant.phoneNumber}<a href="#" onClick={this.deleteParticipant.bind(this,this.props.participant.id)}> <span className="glyphicon">&#xe020;</span></a></p>
          </li>
       </ul>
     </div>

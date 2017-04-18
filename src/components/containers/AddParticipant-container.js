@@ -5,17 +5,25 @@ class AddParticipantContainer extends Component {
   constructor(){
     super();
 
+
     this.state = {
-      newParticipant: {}
+      newParticipant: {},
+     // paticipant_list_size: this.props.participantListSize.length
     }
   }
+
+/*isNumeric(n) {
+  return !Number.isNaN(parseFloat(n)) && Number.isFinite(n);
+}*/
    
  handleSubmit(e){
-  if(this.refs.name.value === ''
-    
-    ){
-    alert('Name is required');
-  }else{
+  //var isnum = (/^\d+$/.test(val));
+  if(this.refs.name.value === ''  ){
+    alert('Please input name');
+
+  } if(this.refs.phone.value === ''){
+    alert('Please input ´phone');
+  } else{
 
     this.setState({newParticipant:{
       id: this.props.participantListSize.length+1,
