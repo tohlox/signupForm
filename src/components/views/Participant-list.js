@@ -1,4 +1,6 @@
 import React,{ Component } from 'react';
+import PropTypes from 'prop-types';
+
 //import Styles from '../styles/Styles';
 
 class ParticipantList extends Component {
@@ -7,6 +9,9 @@ class ParticipantList extends Component {
     this.props.onDelete(id);
     //console.log('test');
 
+  }
+  editParticipant(id){
+  this.props.onEdit(id);
   }
 
 
@@ -74,14 +79,18 @@ class ParticipantList extends Component {
       
       <ul style={ulStyle} className="list-inline">
           
-        <li style={nameListStyle} className="list-inline-item">
+        <li  style={nameListStyle} className="list-inline-item">
+      
           <p style={listText}>{this.props.participant.name} </p>
         </li>
           <li style={emailListStyle} className="list-inline-item">
             <p style={listText}> {this.props.participant.email}</p>
           </li>
          <li style={phoneListStyle} className="list-inline-item">
-          <p style={listText}>{this.props.participant.phoneNumber}<a href="#" onClick={this.deleteParticipant.bind(this,this.props.participant.id)}> <span className="glyphicon">&#xe020;</span></a></p>
+          <p style={listText}>{this.props.participant.phoneNumber}
+          <a href="#" onClick={this.deleteParticipant.bind(this,this.props.participant.id)}> <span className="glyphicon">&#xe020;</span></a>
+          <a href="#" onClick={this.editParticipant.bind(this,this.props.participant.id)}> <span className="glyphicon glyphicon-pencil"></span></a>
+          </p>
          </li>
       </ul>
     </div>
@@ -89,6 +98,16 @@ class ParticipantList extends Component {
     );
   }
 }
+ParticipantList.propTypes = {
+  deleteParticipant: PropTypes.func,
+  onDelete: PropTypes.func,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  phoneNumber: PropTypes.string,
+ 
+ 
+};
+
 
 export default ParticipantList;
 

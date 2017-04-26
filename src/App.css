@@ -3,3 +3,6 @@
 
 	background-color: black;
 }
+#addParticipantForm input.error {
+  border-color: red;
+}

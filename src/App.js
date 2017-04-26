@@ -1,9 +1,29 @@
 import React,{ Component } from 'react';
+import PropTypes from 'prop-types';
 import ParticipantsListContainer from './components/containers/Participants-list-container';
 import AddParticipantContainer from './components/containers/AddParticipant-container';
 import FakeParticipantList from './components/containers/FakeParticipant-list-container';
-import './App.css';
 
+import './App.css';
+/*Your task is to create a small signup form and a list of participants with React that meets the following requirements:
+
+*Use Create React App to scaffold your application
+
+*Generate 20 participants that contain randomized values for the following properties: id, name, email address, and phone number
+
+*Render a table that displays the participants on individual rows
+
+*Create a form for adding new participants to the table (remember to validate the form)
+
+*Make each participant editable by clicking on a table cell (inline editing)
+
+*Add support for deleting rows
+
+*Make each column sortable upon clicking on a column header
+
+*Write a developer-friendly installation guide
+
+*Deploy a live build on the internet*/
 class App extends Component {
   constructor(){
     super();
@@ -57,5 +77,13 @@ class App extends Component {
     );
   }
 }
+App.propTypes = {
+  _dataList: PropTypes.func,
+   handleAddParticipant:PropTypes.func,
+   handleDeleteParticipant:PropTypes.func,
+
+
+  
+};
 
 export default App;

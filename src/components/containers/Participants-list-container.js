@@ -1,10 +1,15 @@
 import React,{ Component } from 'react';
 import ParticipantList from '../views/Participant-list';
+import PropTypes from 'prop-types';
+
 
 class ParticipantsListContainer extends Component {
   deleteParticipant(id){
     this.props.onDelete(id);
   }
+editParticipant(id){
+
+}
 
   render() {
     let participants;
@@ -14,7 +19,7 @@ class ParticipantsListContainer extends Component {
   		console.log(participant);
   	
     return ( 
-  		<ParticipantList onDelete={this.deleteParticipant.bind(this)} key={participant.id} participant={participant} />
+  		<ParticipantList onEdit={this.editParticipant.bind(this)} onDelete={this.deleteParticipant.bind(this)} key={participant.id} participant={participant} />
   	);
   	});
 
@@ -27,5 +32,14 @@ class ParticipantsListContainer extends Component {
     );
   }
 }
+ParticipantsListContainer.propTypes = {
+  deleteParticipant: PropTypes.func,
+  participants: PropTypes.object,
+  onDelete:PropTypes.func,
+
+ 
+ 
+};
+
 
 export default ParticipantsListContainer;
