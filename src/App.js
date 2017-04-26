@@ -67,8 +67,9 @@ class App extends Component {
   render() {
     return(    
       <div  className="App">
+      <div className="addParticipant">
       <AddParticipantContainer participantListSize={this.state.participantList._cache} addParticipant={this.handleAddParticipant.bind(this)} />
-
+      </div>
 
         {/*Pases radom participantList to ParticipantsListContainer*/}
         <ParticipantsListContainer participantList={this.state.participantList._cache} onDelete={this.handleDeleteParticipant.bind(this)}/>
