@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import ParticipantsListContainer from './components/containers/Participants-list-container';
 import AddParticipantContainer from './components/containers/AddParticipant-container';
 import FakeParticipantList from './components/containers/FakeParticipant-list-container';
-
+import update from 'immutability-helper';
 import './App.css';
+
 /*Your task is to create a small signup form and a list of participants with React that meets the following requirements:
 
 *Use Create React App to scaffold your application
@@ -24,6 +25,7 @@ import './App.css';
 *Write a developer-friendly installation guide
 
 *Deploy a live build on the internet*/
+
 class App extends Component {
   constructor(){
     super();
@@ -31,9 +33,13 @@ class App extends Component {
     this.state = {
       participantList:[]
     }
-  }
+   }
 
   componentWillMount(){
+    this.fetchParticipants();
+  }
+
+  fetchParticipants(){
     //Creates 20 new random participants
     this._dataList = new FakeParticipantList(20);
     this._dataList.getAll();
@@ -49,42 +55,67 @@ class App extends Component {
     this.setState({participantList: this._dataList});
     
     //console.log(this.state.participantList._cache
+
   }
 
   handleAddParticipant(participant){
-   let participants = this.state.participantList;
-   participants._cache.push(participant);
-   this.setState({participantList:participants});
+    const participants = this.state.participantList;
+    const participantsUpdated = participants;
+    participantsUpdated._cache = update(participants._cache, {$push: [participant]}); // => [1, 2, 3, 4]
+
+  // participants._cache.push(participant);
+   console.log(participantsUpdated);
+   //this.props.addParticipant(participant);
+   this.setState( { participantList:participantsUpdated} );
   //console.log(participant);
   }
   handleDeleteParticipant(id){
-     let participants = this.state.participantList;
-     let index = participants._cache.findIndex(x => x.id === id);
-     participants._cache.splice(index,1);
-     this.setState({participantList:participants});
+    const participants = this.state.participantList
+    console.log(participants);
+
+    participants._cache = this.state.participantList._cache.filter((participant) => {
+      if(participant.id !== id) return participant;
+    });
+
+    console.log(participants);
+    this.setState({participantList: participants})
+  }
+
+    handleChangedParticipant(participantList){
+   //console.log(participantList+"hello")
+    this.setState({participantList: participantList})
+   
+  }
+
+  sortParticipants(field){
+    
+      console.log(field)
   }
 
   render() {
     return(    
-      <div  className="App">
-      <div className="addParticipant">
-      <AddParticipantContainer participantListSize={this.state.participantList._cache} addParticipant={this.handleAddParticipant.bind(this)} />
-      </div>
-
-        {/*Pases radom participantList to ParticipantsListContainer*/}
-        <ParticipantsListContainer participantList={this.state.participantList._cache} onDelete={this.handleDeleteParticipant.bind(this)}/>
-
+      <div className="App">
+        <div className="Header">
+        </div>
+          <div className="Main-content">
+            <div className="addParticipant">
+              <AddParticipantContainer addParticipant={this.handleAddParticipant.bind(this)} />
+            </div>
+              {/*Pases radom participantList to ParticipantsListContainer*/}
+              <ParticipantsListContainer
+              participantList={this.state.participantList} 
+              onDelete={this.handleDeleteParticipant.bind(this)}  
+              handleChangedParticipant={this.handleChangedParticipant.bind(this)} 
+              sortParticipants={this.sortParticipants.bind(this)}              />
+          </div>
       </div>
     );
   }
 }
 App.propTypes = {
-  _dataList: PropTypes.func,
+    _dataList: PropTypes.func,
    handleAddParticipant:PropTypes.func,
    handleDeleteParticipant:PropTypes.func,
-
-
-  
 };
 
 export default App;

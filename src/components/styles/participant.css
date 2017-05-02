@@ -1,0 +1,85 @@
+/*** ParticipantList CSS ***/
+
+
+//Listing the participants
+
+.table{
+    margin:auto;
+    width:912px;
+    height: 72px;
+    margin-bottom:2px;
+
+}
+
+#nameListStyle {
+        width: 200px;
+        padding-top:26px;
+        padding-left:24px;
+        
+}
+#emailListStyle {
+	list-style: 'none';
+     width: 250px;
+     padding-left:24px;
+     padding-top:26px;
+   
+}
+#phoneListStyle {
+	 list-style: 'none';
+     width: 250px;
+   
+     padding-left:24px;
+     padding-top:26px;
+   
+}
+
+#pTagText{
+        font-size:16px;
+        color:'#505050';
+     
+        font-weight:400px;
+}
+
+#editAndDeleteStyle{
+    color:'#909090';
+    font-size:24px;
+    paddig:20px;
+    margin-left:20px;
+  
+}
+/*Listin participants END*/
+
+
+Inline editing styling
+#containerInput{
+   
+  
+    height: 72px;
+    margin-bottom:10px;
+    background-color: white;
+    padding:0px;
+}
+
+.form-inline{
+    display: flex;
+    //margin-top:40px;
+    padding-top: 16px;
+    //padding-left: 16px;
+
+
+}
+.form-inline .form-control{
+    width: 220px;
+}
+
+.form-inline input {
+    margin-left: 16px;
+    height: 40px;
+
+}
+.form-inline button{
+    margin-left: 80px;
+    height: 40px;
+    width: 100px;
+}
+
